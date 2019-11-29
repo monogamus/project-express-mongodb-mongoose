@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
   name: String,
@@ -9,7 +10,8 @@ const userSchema = new mongoose.Schema({
     city: String,
     postalCode: Number
   },
-  hobbies: [String]
+  hobbies: [String],
+  orders: [{ type: Schema.Types.ObjectId, ref: "order" }]
 });
 
 const User = mongoose.model("User", userSchema);
